@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Learning Plan Assistant – Tool</title>
+  <link rel="stylesheet" href="nccd.css"/>
+  <script defer src="nccd-data.js"></script>
+  <script defer src="nccd.js"></script>
+</head>
+<body class="site-body app-body" onload="initNCCDPage()">
+
+  <!-- Top navigation (matches home, but without the full-height hero wrapper) -->
+  <header class="app-topbar" role="banner">
+    <div class="site-nav">
+      <div class="site-brand">
+        <div class="site-logo-icon" aria-hidden="true"></div>
+        <span class="site-logo-main">LEARNING PLAN</span>
+      </div>
+      <nav class="site-nav-links" aria-label="primary">
+        <a href="index.html">home</a>
+        <a href="app.html" class="is-active">tool</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page" role="main">
+    <section class="page-band">
+      <div class="card card-pad" data-animate="0">
+        <div class="tabs-header">
+          <div class="tabs-brand">
+            <span class="tabs-logo">LEARNING PLAN</span>
+            <span class="tabs-logo-sub">assistant</span>
+          </div>
+
+          <!-- Dropdown navigation (sections) -->
+          <div class="section-switcher">
+            <div class="section-menu" data-section-menu>
+              <button
+                type="button"
+                class="section-menu-button"
+                id="sectionMenuButton"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="sectionMenu"
+              >
+                <span class="section-menu-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                  </svg>
+                </span>
+                <span class="section-menu-label">Section</span>
+                <span class="section-menu-value" data-section-menu-value>Learning plan</span>
+                <span class="section-menu-caret" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
+              </button>
+
+              <div class="section-menu-popover" id="sectionMenu" role="menu" aria-labelledby="sectionMenuButton">
+                <button type="button" class="section-menu-item" role="menuitemradio" aria-checked="false" data-tab="tab-adjustments" data-label="Adjustment notes">
+                  <span class="item-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 20h16"></path>
+                      <path d="M6 16V4h9l3 3v9"></path>
+                      <path d="M9 8h6"></path>
+                      <path d="M9 12h6"></path>
+                    </svg>
+                  </span>
+                  <span class="item-text">Adjustment notes</span>
+                </button>
+
+                <button type="button" class="section-menu-item is-active" role="menuitemradio" aria-checked="true" data-tab="tab-plan" data-label="Learning plan">
+                  <span class="item-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 7h16"></path>
+                      <path d="M4 12h16"></path>
+                      <path d="M4 17h10"></path>
+                      <path d="M16 17l2 2 3-3"></path>
+                    </svg>
+                  </span>
+                  <span class="item-text">Learning plan</span>
+                </button>
+
+                <button type="button" class="section-menu-item" role="menuitemradio" aria-checked="false" data-tab="tab-howto" data-label="How to use">
+                  <span class="item-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 17h.01"></path>
+                      <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+                      <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10z"></path>
+                    </svg>
+                  </span>
+                  <span class="item-text">How to use</span>
+                </button>
+
+                <button type="button" class="section-menu-item" role="menuitemradio" aria-checked="false" data-tab="tab-info" data-label="Info & disclaimer">
+                  <span class="item-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 16v-5"></path>
+                      <path d="M12 8h.01"></path>
+                      <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10z"></path>
+                    </svg>
+                  </span>
+                  <span class="item-text">Info & disclaimer</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panels live inside the same card so there’s no empty teal gap -->
+        <div class="tab-panel" id="tab-adjustments" data-animate="1" role="tabpanel" aria-label="adjustment notes">
+        <div class="kicker">adjustment notes</div>
+          <p class="lede">generate evidence-based adjustment comments and individual plan support notes for NCCD reporting. all comments are written in past tense and automatically include student names.</p>
+
+        <div class="beta-banner beta-hidden" id="betaBannerNotes" aria-hidden="true">
+          <strong>beta enabled:</strong> select teacher and student from saved list (stored locally on this device).
+        </div>
+
+        <div class="section">
+          <div class="form-grid">
+            <div>
+              <label>teacher name</label>
+              <input id="teacherName" type="text" placeholder="e.g. Ms Smith"/>
+            </div>
+            <div>
+              <label>student name</label>
+              <input id="studentName" type="text" placeholder="e.g. Alex"/>
+              <select id="betaStudentSelectNotes" class="form-control beta-hidden" aria-label="Select student (beta)">
+                <option value="">select student</option>
+              </select>
+            </div>
+            <div>
+              <label>date</label>
+              <input id="nccdDate" type="date"/>
+            </div>
+          </div>
+          <p class="small">teacher and student details are only used to personalise comments and are not stored.</p>
+        </div>
+
+        <div class="section horizontal-fields">
+          <div>
+            <label>filter adjustments by barrier (optional)</label>
+            <select id="noteBarrierFilter" class="form-control">
+              <option value="">all barriers</option>
+            </select>
+          </div>
+          <div>
+            <label>adjustment</label>
+            <select id="nccdStrategy" class="form-control">
+              <option value="">select an adjustment</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section horizontal-fields">
+          <div>
+            <label>student engagement level</label>
+            <select id="nccdEngagement" class="form-control">
+              <option value="">select engagement level</option>
+              <option value="high">high engagement</option>
+              <option value="moderate">moderate engagement</option>
+              <option value="developing">developing engagement</option>
+              <option value="low">low engagement</option>
+            </select>
+          </div>
+          <div>
+            <label>outcome of adjustment</label>
+            <select id="nccdOutcome" class="form-control">
+              <option value="">select outcome</option>
+              <option value="improved-skills">improved skills</option>
+              <option value="increased-confidence">increased confidence</option>
+              <option value="enhanced-engagement">enhanced engagement</option>
+              <option value="better-comprehension">better comprehension</option>
+              <option value="progress-towards-goals">progress towards goals</option>
+              <option value="positive-behaviour">positive behaviour change</option>
+              <option value="skill-consolidation">skill consolidation</option>
+              <option value="independence">increased independence</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section">
+          <label>generated adjustment comment</label>
+          <textarea id="nccdAdjustmentComment" rows="6" placeholder="enter a student name and select an adjustment to generate a comment..." readonly class="nccd-copyable"></textarea>
+          <div class="button-row">
+            <button class="btn secondary" onclick="generateAdjustmentComment()">generate comment</button>
+            <button class="btn ghost" onclick="copyToClipboard('nccdAdjustmentComment')">copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel is-active" id="tab-plan" data-animate="2" role="tabpanel" aria-label="learning plan">
+        <div class="kicker">learning plan</div>
+        <p class="small">find a barrier quickly, then generate and copy linked adjustments for planning and NCCD evidence.</p>
+
+        <div class="ip-layout">
+          <aside class="ip-sidebar">
+            <div class="beta-panel beta-hidden" id="betaPanelPlan" aria-hidden="true">
+              <div class="beta-panel-title">beta: class list & saved plans</div>
+              <div class="beta-row">
+                <div class="beta-field">
+                  <label>student</label>
+                  <select id="betaStudentSelectPlan" class="form-control" aria-label="Select student (beta)">
+                    <option value="">select student</option>
+                  </select>
+                </div>
+                <div class="beta-field">
+                  <label>add student</label>
+                  <div class="beta-inline">
+                    <input id="betaAddStudentInput" class="form-control" type="text" placeholder="e.g. Alex Nguyen" />
+                    <button class="btn ghost beta-add-btn" type="button" id="betaAddStudentBtn">add</button>
+                  </div>
+                </div>
+              </div>
+              <div class="beta-student-list" id="betaStudentList" aria-label="Saved class list"></div>
+              <div class="beta-note">stored locally in your browser. switch beta off in the info tab to disable.</div>
+            </div>
+
+            <div class="ip-filters">
+              <div class="ip-filter">
+                <label>primary area / diagnosis (optional)</label>
+                <select id="diagnosisFilter" class="form-control">
+                  <option value="">all areas</option>
+                </select>
+              </div>
+              <div class="ip-filter">
+                <label>search barriers</label>
+                <input id="ipSearch" type="text" class="form-control" placeholder="e.g. anxiety, decoding, routines…" />
+              </div>
+            </div>
+
+            <div class="ip-list">
+              <div class="ip-list-header">
+                <div class="ip-list-title">barriers</div>
+                <div class="ip-list-count" id="ipBarrierCount"></div>
+              </div>
+              <div class="ip-list-items" id="ipBarrierList" role="list"></div>
+            </div>
+          </aside>
+
+          <section class="ip-detail">
+            <div class="ip-empty" id="ipEmptyState">
+              <div class="ip-empty-title">select a barrier</div>
+              <div class="ip-empty-text">choose a barrier from the list to view the description and linked adjustments.</div>
+            </div>
+
+            <div class="ip-detail-card" id="ipDetailCard" style="display:none">
+              <div class="ip-detail-header">
+                <div>
+                  <div class="ip-detail-label" id="ipDetailLabel"></div>
+                  <div class="ip-detail-desc" id="ipDetailDesc"></div>
+                </div>
+                <div class="ip-detail-actions">
+                  <button class="btn ghost" type="button" id="ipCopyBarrierBtn">copy barrier</button>
+                  <button class="btn secondary beta-hidden" type="button" id="betaSaveBarrierBtn">save to student</button>
+                </div>
+              </div>
+
+              <div class="ip-adjustments">
+                <div class="ip-adjustments-title">linked adjustments</div>
+                <div id="ipAdjustmentsList"></div>
+              </div>
+
+              <div class="lp-saved beta-hidden" id="lpSavedPanel" aria-hidden="true">
+                <div class="lp-saved-title">saved for student</div>
+                <div class="lp-saved-list" id="lpSavedList"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-howto" role="tabpanel" aria-label="how to use">
+        <div class="kicker">how to use this tool</div>
+        <div class="section">
+          <p class="lede">this page is designed to support teachers to document reasonable adjustments for NCCD in plain language that reflects what actually happens in the classroom.</p>
+          <ul class="howto-list">
+            <li><strong>1. start with adjustment notes:</strong> enter your name and the student's name, then choose an adjustment, engagement level and outcome. generate a comment and copy it into reports or ILPs.</li>
+            <li><strong>2. build your learning plan:</strong> switch to the learning plan tab, choose the primary area/diagnosis, then select a barrier. review the non-deficit description and use linked adjustments with frequency, duration and responsible staff fields.</li>
+            <li><strong>3. personalise wording:</strong> adjust any generated text so it reflects your local language, school processes and evidence.</li>
+            <li><strong>4. keep ownership with the teacher:</strong> this tool does not store student data. everything stays on the page you have open.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-info" role="tabpanel" aria-label="info and disclaimer">
+        <div class="kicker">info & disclaimer</div>
+        <div class="section">
+          <p class="small" style="margin-bottom:12px">Learning Plan Assistant is a planning aid. it does not replace professional judgement, school-based processes, or local jurisdictional guidance.</p>
+          <div class="beta-toggle">
+            <label class="beta-toggle-row">
+              <input type="checkbox" id="betaEnableToggle" />
+              <span><strong>beta:</strong> enable local class list + saved plans (uses this device’s local storage)</span>
+            </label>
+            <p class="small">when enabled, you can save your name and class list locally so you can select students from a dropdown. you can also save barriers and adjustments per student. no data is sent anywhere.</p>
+          </div>
+          <ul class="howto-list">
+            <li><strong>non-deficit language:</strong> barriers are described in terms of curriculum, environment and teaching adjustments rather than student deficits.</li>
+            <li><strong>local alignment:</strong> always check that comments align with your school's NCCD processes, evidence requirements and documentation templates.</li>
+            <li><strong>privacy:</strong> teacher and student names are only used inside this browser tab to personalise wording and are not saved to storage or sent to any server.</li>
+            <li><strong>copyright:</strong> content and layout © <span id="copyrightYear"></span> Simon Dass. this tool is provided for professional use in schools.</li>
+          </ul>
+        </div>
+      </div>
+  </main>
+
+  <div class="footer">
+    © <span class="accent">Learning Plan Assistant</span> • <span id="copyrightYearFooter"></span> Simon Dass
+  </div>
+
+</body>
+</html>

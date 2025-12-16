@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>NCCD Support – home</title>
+  <link rel="stylesheet" href="nccd.css"/>
+</head>
+<body class="site-body">
+
+  <header class="site-shell">
+    <div class="site-nav">
+      <div class="site-brand">
+        <span class="site-logo-main">NCCD</span>
+        <span class="site-logo-sub">support</span>
+      </div>
+      <nav class="site-nav-links" aria-label="primary">
+        <a href="home.html" class="is-active">home</a>
+        <a href="index.html">tool</a>
+      </nav>
+    </div>
+
+    <main class="site-hero">
+      <section class="site-hero-text">
+        <p class="site-kicker">classroom-first adjustment planning</p>
+        <h1 class="site-title">NCCD support tool for teachers and schools.</h1>
+        <p class="site-lede">
+          Plan, describe and document reasonable adjustments using language that centres the classroom environment,
+          not student deficit. All generated text stays on your device.
+        </p>
+        <div class="site-cta-row">
+          <a href="index.html" class="btn site-cta-primary">open NCCD tool</a>
+          <button class="btn ghost site-cta-secondary" onclick="document.getElementById('site-info').scrollIntoView({behavior:'smooth'});">
+            learn more
+          </button>
+        </div>
+      </section>
+
+      <section class="site-hero-visual">
+        <div class="site-hero-card">
+          <div class="site-hero-chip">live preview</div>
+          <div class="site-hero-main">
+            <div class="site-hero-block accent"></div>
+            <div class="site-hero-block soft"></div>
+          </div>
+          <p class="site-hero-caption">
+            Non-deficit barrier language, linked adjustments, and ready-to-polish NCCD comments – all in one tabbed workspace.
+          </p>
+        </div>
+      </section>
+    </main>
+  </header>
+
+  <section class="site-info" id="site-info">
+    <div class="site-info-inner">
+      <div>
+        <h2>Designed around NCCD evidence.</h2>
+        <p>
+          NCCD Support helps teachers describe what they already do – with structured prompts for barrier descriptions,
+          adjustments, frequency, duration and responsible staff. It is designed to sit alongside existing school
+          processes and templates.
+        </p>
+      </div>
+      <ul>
+        <li><strong>non-deficit wording:</strong> barriers foreground curriculum, environment and teaching factors.</li>
+        <li><strong>structured comments:</strong> adjustment text includes frequency, duration and responsibility fields.</li>
+        <li><strong>no logins or storage:</strong> all information is held only in the current browser session.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © <span class="accent">NCCD Support</span> • <span id="homeYear"></span> Simon Dass
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var y = new Date().getFullYear();
+      var el = document.getElementById('homeYear');
+      if (el) el.textContent = y;
+    });
+  </script>
+</body>
+</html>
+
+

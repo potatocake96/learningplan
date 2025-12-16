@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Learning Plan Assistant – home</title>
+  <link rel="stylesheet" href="nccd.css"/>
+</head>
+<body class="site-body">
+
+  <header class="site-shell">
+    <div class="site-nav">
+      <div class="site-brand">
+        <div class="site-logo-icon"></div>
+        <span class="site-logo-main">LEARNING PLAN</span>
+      </div>
+      <nav class="site-nav-links" aria-label="primary">
+        <a href="index.html" class="is-active">Home</a>
+        <a href="app.html">Tool</a>
+      </nav>
+    </div>
+
+    <main class="site-hero">
+      <aside class="site-sidebar">
+        <nav>
+          <ul class="site-sidebar-nav">
+            <li><a href="index.html" class="is-active">LEARNING PLAN</a></li>
+            <li><a href="app.html">tool</a></li>
+            <li><a href="#features">features</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="site-hero-content">
+        <h1 class="site-title">Learning Plan Assistant</h1>
+        <p class="site-lede">
+          A free, open-source tool to support staff who are under pressure with NCCD compliance. Create learning plan notes and generate NCCD-aligned adjustment comments using non-deficit language. All data stays in your browser session.
+        </p>
+        <div class="site-cta-row">
+          <a href="app.html" class="site-cta-primary">Open Tool</a>
+        </div>
+      </section>
+    </main>
+  </header>
+
+  <section class="site-info" id="features">
+    <div class="site-info-inner">
+      <div>
+        <h2>Why I built this</h2>
+      </div>
+      <ul>
+        <li>
+          <strong>adjustment notes</strong>
+          Generate past-tense comments for NCCD documentation with structured prompts for engagement and outcomes.
+        </li>
+        <li>
+          <strong>learning plan</strong>
+          Find barriers quickly, use non-deficit descriptions, and generate linked adjustments with frequency, duration and responsible staff fields.
+        </li>
+        <li>
+          <strong>non-deficit language</strong>
+          Barriers focus on curriculum, environment and teaching factors rather than student deficits.
+        </li>
+        <li>
+          <strong>free & open source</strong>
+          Designed to be shared and improved by educators. No logins, no cloud storage, no data transmission.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © <span class="accent">Learning Plan Assistant</span> • <span id="homeYear"></span> Simon Dass
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var y = new Date().getFullYear();
+      var el = document.getElementById('homeYear');
+      if (el) el.textContent = y;
+      
+      // Parallax scroll effect
+      let lastScroll = 0;
+      const heroContent = document.querySelector('.site-hero-content');
+      const sidebar = document.querySelector('.site-sidebar');
+      
+      function handleParallax() {
+        const scroll = window.pageYOffset;
+        if (heroContent && scroll < window.innerHeight) {
+          heroContent.style.transform = `translateY(${scroll * 0.3}px)`;
+          heroContent.style.opacity = 1 - (scroll / window.innerHeight) * 0.5;
+        }
+        if (sidebar && scroll < window.innerHeight) {
+          sidebar.style.transform = `translateY(${scroll * 0.2}px)`;
+        }
+        lastScroll = scroll;
+      }
+      
+      window.addEventListener('scroll', handleParallax, { passive: true });
+    });
+  </script>
+</body>
+</html>
